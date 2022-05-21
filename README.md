@@ -299,7 +299,7 @@ const UserSchema = new mongoose.Schema ({
 });
 ```
 
-## Package.json
+## package.json
 ```
 {
   "name": "node-typescript-init",
