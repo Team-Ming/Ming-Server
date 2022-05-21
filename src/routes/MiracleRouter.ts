@@ -4,6 +4,8 @@ import { MiracleController } from '../controllers';
 
 const router: Router = express.Router();
 
-router.get('/:userId/:date', MiracleController.getMiracle);
+router.post('/', MiracleController.createMiracle);
+
+router.get('/:userId/:_date', MiracleController.getMiracle);
 
 export default router;

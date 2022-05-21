@@ -3,6 +3,7 @@ import message from '../modules/responseMessage';
 import statusCode from '../modules/statusCode';
 import express, { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
+import { MiracleCreateDto } from '../interfaces/miracle/MiracleCreateDto';
 import { MiracleService } from '../services';
 
 /**
@@ -18,11 +19,15 @@ const getMiracle = async (req: Request, res: Response) => {
     }
 
     const {user_id,_date} = req.params;
+    console.log(_date);
+
     
     try{
         const data = await MiracleService.getMiracle(user_id, _date);
+        if(data==null){
+            res.status(statusCode.NOT_FOUND).json(util.fail(statusCode.NOT_FOUND, message.NOT_FOUND)); 
+        }
         res.status(statusCode.OK).send(util.success(statusCode.OK,message.READ_TODAY_MIRACLE_SUCCESS,data));
-
 
     }catch(error){
         console.log(error);
@@ -30,6 +35,32 @@ const getMiracle = async (req: Request, res: Response) => {
    }
     
 }
-export default {
+
+/**
+ *  @route POST /miracle
+ *  @desc Create miracle
+ *  @access Public
+ */
+const createMiracle = async (req: Request, res: Response) => {
+  const miracleCreateDto: MiracleCreateDto = req.body;
+
+  try {
+    const data = await MiracleService.createMiracle(miracleCreateDto);
+
+    res
+      .status(statusCode.CREATED)
+      .send(
+        util.success(statusCode.CREATED, message.CREATE_MIRACLE_SUCCESS, data)
+      );
+  } catch (error) {
+    console.log(error);
+    res
+      .status(statusCode.BAD_REQUEST)
+      .send(util.fail(statusCode.BAD_REQUEST, message.BAD_REQUEST));
+  }
+};
+
+export default { 
+    createMiracle ,
     getMiracle
 };

@@ -1,7 +1,24 @@
-import { MiracleResponseDto } from "../interfaces/miracle/MiracleResponseDto";
 import User from "../models/user/User";
 import dayjs from "dayjs";
 import Miracle from "../models/miracle/Miracle";
+import { MiracleCreateDto } from "../interfaces/miracle/MiracleCreateDto";
+
+const createMiracle = async (miracleCreateDto: MiracleCreateDto) => {
+  try {
+    const miracle = new Miracle({
+      writer: miracleCreateDto.writer,
+      content: miracleCreateDto.content,
+    });
+
+    await miracle.save();
+
+    return miracle;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 
 const getMiracle = async (user_id:string, _date:string) : Promise< Miracle | null>  => { 
     try{
@@ -12,15 +29,16 @@ const getMiracle = async (user_id:string, _date:string) : Promise< Miracle | nul
             return null;
         }
         
-        const todayDate = dayjs(_date);
-        const tomorrowDate = dayjs(_date).add(1, "day");
+        console.log(_date);
+        const todayDate = dayjs(_date).add(9,'hour').toDate();
+        const tomorrowDate = dayjs(_date).add(1, "day").add(9,'hour').toDate();
         console.log(todayDate);
         console.log(tomorrowDate);
 
-        //db.posts.find({"created_on": {"$gte": start, "$lt": end}})
+        //db.posts.find({"createdAt": {"$gte": start, "$lt": end}})
         const miracle = await Miracle.findOne(
             {
-                "created_on": {"$gte": todayDate, "$lt": tomorrowDate}
+                "createdAt": {"$gte": todayDate, "$lt": tomorrowDate}
             }
         );
         console.log(miracle);
@@ -40,5 +58,6 @@ const getMiracle = async (user_id:string, _date:string) : Promise< Miracle | nul
 }
 
 export default {
-    getMiracle
+    getMiracle,
+    createMiracle
 };
