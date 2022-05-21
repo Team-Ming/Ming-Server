@@ -1,11 +1,14 @@
-import mongoose from "mongoose";
-import { UserInfo } from "../../interfaces/user/UserInfo";
+import mongoose from 'mongoose';
+import { UserInfo } from '../../interfaces/user/UserInfo';
 
-const UserSchema = new mongoose.Schema ({
+const UserSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
-        required: true
-    }
-});
+      type: String,
+      required: true,
+    },
+  },
+  { versionKey: false }
+);
 
-export default mongoose.model<UserInfo & mongoose.Document> ("User",UserSchema);
+export default mongoose.model<UserInfo & mongoose.Document>('User', UserSchema);

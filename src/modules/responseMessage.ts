@@ -6,6 +6,7 @@ const message = {
 
   // miracle
   CREATE_MIRACLE_SUCCESS: '기적 생성 성공',
+  GET_ALL_MIRACLE_SUCCESS: '모든 기적 조회 성공',
 };
 
 export default message;

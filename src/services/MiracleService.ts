@@ -17,4 +17,14 @@ const createMiracle = async (miracleCreateDto: MiracleCreateDto) => {
   }
 };
 
-export default { createMiracle };
+const getAllMiracles = async () => {
+  try {
+    const miracles = await Miracle.find().sort({ createdAt: -1 });
+    return miracles;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export default { createMiracle, getAllMiracles };

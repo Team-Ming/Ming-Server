@@ -29,4 +29,24 @@ const createMiracle = async (req: Request, res: Response) => {
   }
 };
 
-export default { createMiracle };
+/**
+ *  @route GET /miracle/all
+ *  @desc get all miracle
+ *  @access Public
+ */
+const getAllMiracles = async (req: Request, res: Response) => {
+  try {
+    const data = await MiracleService.getAllMiracles();
+
+    res
+      .status(statusCode.OK)
+      .send(util.success(statusCode.OK, message.GET_ALL_MIRACLE_SUCCESS, data));
+  } catch (error) {
+    console.log(error);
+    res
+      .status(statusCode.BAD_REQUEST)
+      .send(util.fail(statusCode.BAD_REQUEST, message.BAD_REQUEST));
+  }
+};
+
+export default { createMiracle, getAllMiracles };
