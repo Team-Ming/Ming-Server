@@ -1,4 +1,3 @@
-// controller index file
-export {
-    
-}
+import MiracleController from './MiracleController';
+
+export { MiracleController };

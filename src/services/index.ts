@@ -1,4 +1,2 @@
-//service index file
-export {
-
-}
+import MiracleService from './MiracleService';
+export { MiracleService };

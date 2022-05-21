@@ -1,9 +1,8 @@
-//router index file
 import { Router } from 'express';
+import MiracleRouter from './MiracleRouter';
 
+const router: Router = Router();
 
-const router = Router();
-
-
+router.use('/miracle', MiracleRouter);
 
 export default router;
