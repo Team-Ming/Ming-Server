@@ -230,16 +230,17 @@ ex) `postUserInformation( )`
 
 📦 controllers               // service에서 처리된 로직들을 전달 받아 response해줌
  ┣ 📜 index.ts
- ┗ 📜 ProjectController.ts
+ ┗ 📜 MiracleController.ts
 
 📦 interfaces                // type interface 정의
  ┗ 📂 common
  ┃ ┣ 📜 PostBaseResponseDto.ts
- ┃ ┗ 📜 JwtPayloadInfo.ts
- ┗ 📂 project
-   ┣ 📜 ProjectInfo.ts
-   ┗ 📜 ProjectCreateDto.ts
-
+ ┗ 📂 miracle
+   ┣ 📜 MiracleCreateDto.ts
+   ┣ 📜 MiracleInfo.ts┣
+   ┗ 📜 MiracleCreateDto.ts
+   📂 user
+   ┣ 📜 UserInfo.ts
 📦 loaders              
  ┗ 📜 db.ts
 
@@ -247,21 +248,23 @@ ex) `postUserInformation( )`
  ┗ 📜 auth.ts            
 
 📦 models                    // mongoose.Schema 정의
- ┗ 📜 Project.ts
+ ┗ 📂 miracle
+   ┗ 📜 Miracle.ts
+   📂 user
+   ┗ 📜 User.ts
 
-📦 modules                 
- ┣ 📜 jwtHandler.ts
+📦 modules            
  ┗ 📜 util.ts 
  ┗ 📜 statusCode.ts
  ┗ 📜 responseMessage.ts
 
 📦 routes                    // endpoint 정의
  ┣ 📜 index.ts
- ┗ 📜 ProjectRouter.ts 
+ ┗ 📜 MiracleRouter.ts 
 
 📦 services                  // 상세 구현, controller로 전달 됨
  ┣ 📜 index.ts
- ┗ 📜 ProjectService.ts
+ ┗ 📜 MiracleService.ts
 ```
 
 
