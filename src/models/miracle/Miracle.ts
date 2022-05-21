@@ -7,7 +7,7 @@ const MiracleSchema = new mongoose.Schema({
         required: true,
         ref: "User"
     },
-    contents:[{
+    content:[{
         type: String,
         required: true
     }]
