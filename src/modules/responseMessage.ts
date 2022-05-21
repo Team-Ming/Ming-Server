@@ -5,8 +5,9 @@ const message = {
     INTERNAL_SERVER_ERROR: '서버 내부 오류',
 
     //Miracle
+    GET_ALL_MIRACLE_SUCCESS: '모든 기적 조회 성공',
+    CREATE_MIRACLE_SUCCESS: '기적 생성 성공',
     READ_TODAY_MIRACLE_SUCCESS: '오늘의 기적 가져오기 성공',
-   CREATE_MIRACLE_SUCCESS: '기적 생성 성공'
 };
 
 export default message;

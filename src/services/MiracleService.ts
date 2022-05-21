@@ -19,6 +19,15 @@ const createMiracle = async (miracleCreateDto: MiracleCreateDto) => {
   }
 };
 
+const getAllMiracles = async () => {
+  try {
+    const miracles = await Miracle.find().sort({ createdAt: -1 });
+    return miracles;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
 
 const getMiracle = async (user_id:string, _date:string) : Promise< Miracle | null>  => { 
     try{
@@ -57,7 +66,4 @@ const getMiracle = async (user_id:string, _date:string) : Promise< Miracle | nul
     }
 }
 
-export default {
-    getMiracle,
-    createMiracle
-};
+export default { createMiracle, getAllMiracles, getMiracle };

@@ -15,7 +15,7 @@ const MiracleSchema = new mongoose.Schema(
       },
     ],
   },
-  { timestamps: true }
+  { timestamps: true, versionKey: false }
 );
 
 export default mongoose.model<MiracleInfo & mongoose.Document>(
