@@ -264,6 +264,82 @@ ex) `postUserInformation( )`
  ┗ 📜 ProjectService.ts
 ```
 
+
+## Collection
+### Miracle
+```
+const MiracleSchema = new mongoose.Schema(
+  {
+    writer: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
+    content: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
+  },
+  { timestamps: true }
+);
+```
+
+### User
+```
+const UserSchema = new mongoose.Schema ({
+    name: {
+        type: String,
+        required: true
+    }
+});
+```
+
+## Package.json
+```
+{
+  "name": "node-typescript-init",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "api-docs": "swagger-cli bundle ./src/swagger/openapi.yaml --outfile build/swagger.yaml --type yaml",
+    "predev": "npm run api-docs",
+    "build": "tsc && node dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^17.0.25",
+    "@types/swagger-ui-express": "^4.1.3",
+    "@types/yamljs": "^0.2.31",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "mongoose": "^6.3.1",
+    "swagger-cli": "^4.0.4",
+    "swagger-ui-express": "^4.4.0",
+    "yamljs": "^0.3.0"
+  }
+}
+
+```
+
+## Server Architecture
+<img width="997" alt="스크린샷 2022-05-22 오전 6 44 04" src="https://user-images.githubusercontent.com/49470328/169669919-ec41c506-200a-40b6-8c96-29f02ad04bbd.png">
+
+
 ## API 명세서
 
 https://placid-cathedral-2f0.notion.site/API-9296ee564e514f389f12766cbb309466
+
